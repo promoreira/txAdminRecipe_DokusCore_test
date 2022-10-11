@@ -30,7 +30,7 @@ variables:
 tasks:
   # Download and prepare server configs & database
   - action: download_github #1
-    src: https://github.com/promoreira/DokusCore--Recipe
+    src: https://github.com/promoreira/txAdminRecipe_DokusCore_test
     ref: main
     dest: ./tmp/DokusCore
 
