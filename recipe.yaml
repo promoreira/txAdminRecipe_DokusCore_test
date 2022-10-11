@@ -221,7 +221,7 @@ tasks:
     mode: all_vars
     file: 
       - ./admins.cfg
-      - ./redentials.cfg
+      - ./credentials.cfg
       - ./license.cfg
       - ./mysql.cfg
     
