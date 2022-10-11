@@ -17,7 +17,10 @@ description: A RedM Framework for quality with love :)!
 # Change the values as you need
 variables:
     projectName: DokusCore                # Framework Project Name
-    
+    dbHost: localhost                     # Database Host
+    dbUsername: root                      # Database User
+    dbPassword: ""                        # Database Password
+    dbName: DokusCore                     # Database Name        
 tasks:
   # Download and prepare server configs & database
   - action: download_github #1
