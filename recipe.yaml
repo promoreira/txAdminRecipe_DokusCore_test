@@ -1,0 +1,228 @@
+################################################################################
+#     ___             _                       ___                              #
+#    |   \    ___    | |__   _  _     ___    / __|    ___      _ _    ___      #
+#    | |) |  / _ \   | / /  | +| |   (_-<   | (__    / _ \    | '_|  / -_)     #
+#    |___/   \___/   |_\_\   \_,_|   /__/_   \___|   \___/   _|_|_   \___|     #
+#   _|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|_|"""""|   #
+#   "`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'"`-0-0-'   #
+################################################################################
+#
+$engine: 3
+$onesync: off # Until all the bugs related to it get fixed it will be better keep OnSync OFF
+name: DokusCore-Recipe
+version: 0.6.4
+author: DoKusCore FrameWork Team
+description: A RedM Framework for quality with love :)! 
+
+# Change the values as you need
+variables:
+    projectName: DokusCore                # Framework Project Name
+    dbHost: localhost                     # Database Host
+    dbUsername: root                      # Database User
+    dbPassword: ""                        # Database Password
+    dbName: DokusCore                     # Database Name
+    steam_webApiKey: your steam webapi    # https://steamcommunity.com/dev/apikey4
+    discord: your server discord          # Server Discord Link
+    server_tags: your server tags         # Server Tags ex: REDM, RP, Brazil, Shops
+    locale: en-US                         # Server Language
+    load_server_icon: Logo.png            # Server Logo Icon Loading
+    GameBuild: 1436                       # Game Build Version
+    convar: skrt                          # Server Convar
+    banner_detail: https://mmos.com/wp-content/uploads/2019/10/red-dead-redemption-2-arthur-morgan-banner.jpg
+    banner_connecting: https://mmos.com/wp-content/uploads/2019/10/red-dead-redemption-2-arthur-morgan-banner.jpg    
+    
+tasks:
+  # Download and prepare server configs & database
+  - action: download_github #1
+    src: https://github.com/promoreira/DokusCore--Recipe
+    ref: main
+    dest: ./tmp/DokusCore
+
+  # DoskusCore Server configs
+  - action: move_path #2
+    src: ./tmp/DokusCore/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path #3
+    src: ./tmp/DokusCore/admins.cfg
+    dest: ./admins.cfg
+
+  - action: move_path #4
+    src: ./tmp/DokusCore/credentials.cfg
+    dest: ./credentials.cfg
+
+  - action: move_path #5
+    src: ./tmp/DokusCore/license.cfg
+    dest: ./license.cfg
+
+  - action: move_path #6
+    src: ./tmp/DokusCore/mysql.cfg
+    dest: ./mysql.cfg
+
+  - action: move_path #7
+    src: ./tmp/DokusCore/resources.cfg
+    dest: ./resources.cfg
+
+  - action: move_path #8
+    src: ./tmp/DokusCore/Logo.png
+    dest: ./Logo.png
+
+  # DoskusCore Server Start Bat
+  - action: move_path #9
+    src: ./tmp/DokusCore/DokusCore.bat
+    dest: ./DokusCore.bat
+
+  # DoskusCore Database
+  - action: connect_database #10
+  - action: query_database #11
+    file: ./tmp/DokusCore/db.sql
+
+# Define a folder for DokusZones
+  - action: ensure_dir #12
+    path: ./resources/[ DokusZones ]
+
+  # Download basic resources and DokusCore dependencies
+  # Download default CFX resources
+  - action: download_github #13
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources/[ Core ]/[ FiveM ]
+  
+  # DoskusCore Dependencies
+  - action: download_github #14
+    src: https://github.com/DokusCore/DokusCore--Dependencies
+    ref: main
+    dest: ./resources/[ Core ]/[ Dependencies ]
+  
+  # DoskusCore Resources / Plugins
+  - action: download_github #15
+    src: https://github.com/DokusCore/DokusCore
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore
+  
+  - action: download_github #16
+    src: https://github.com/DokusCore/DokusCore--Banking
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Banking
+  
+  - action: download_github #17
+    src: https://github.com/DokusCore/DokusCore--Boats
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Boats
+  
+  - action: download_github #18
+    src: https://github.com/DokusCore/DokusCore--Characters
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Characters 
+  
+  - action: download_github #19
+    src: https://github.com/DokusCore/DokusCore--Clothing 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Clothing 
+  
+  - action: download_github #20
+    src: https://github.com/DokusCore/DokusCore--CoreMenu 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--CoreMenu 
+  
+  - action: download_github #21
+    src: https://github.com/DokusCore/DokusCore--DataSync 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--DataSync 
+  
+  - action: download_github #22
+    src: https://github.com/DokusCore/DokusCore--FastTravel 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--FastTravel
+  
+  - action: download_github #23
+    src: https://github.com/DokusCore/DokusCore--Guidance 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Guidance 
+  
+  - action: download_github #24
+    src: https://github.com/DokusCore/DokusCore--Instruments 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Instruments 
+  
+  - action: download_github #25
+    src: https://github.com/DokusCore/DokusCore--Inventory 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Inventory 
+  
+  - action: download_github #26
+    src: https://github.com/DokusCore/DokusCore--Metabolism 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Metabolism 
+  
+  - action: download_github #27
+    src: https://github.com/DokusCore/DokusCore--NPCMenu 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--NPCMenu 
+  
+  - action: download_github #28
+    src: https://github.com/DokusCore/DokusCore--ScratchCards 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--ScratchCards 
+  
+  - action: download_github #29
+    src: https://github.com/DokusCore/DokusCore--ScriptBundle 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--ScriptBundle 
+  
+  - action: download_github #30
+    src: https://github.com/DokusCore/DokusCore--Skins 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Skins 
+  
+  - action: download_github #31
+    src: https://github.com/DokusCore/DokusCore--Spawner 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Spawner 
+  
+  - action: download_github #32
+    src: https://github.com/DokusCore/DokusCore--Stables 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Stables 
+  
+  - action: download_github #33
+    src: https://github.com/DokusCore/DokusCore--Stores 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Stores 
+  
+  - action: download_github #34
+    src: https://github.com/DokusCore/DokusCore--Telegrams 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Telegrams 
+  
+  - action: download_github #35
+    src: https://github.com/DokusCore/DokusCore--Trains 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Trains 
+  
+  - action: download_github #36
+    src: https://github.com/DokusCore/DokusCore--UsableItems 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--UsableItems 
+  
+  - action: download_github #37
+    src: https://github.com/DokusCore/DokusCore--WorldEdits 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--WorldEdits 
+  
+  - action: download_github #38
+    src: https://github.com/DokusCore/DokusCore--Zones
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Zones 
+  
+  ## DokusCore cleanup
+  - action: remove_path #39
+    path: ./tmp
+
+# Multiple files replace_string
+  - action: replace_string #40
+    mode: all_vars
+    file: 
+      - ./*.cfg
+    
