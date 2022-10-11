@@ -220,6 +220,7 @@ tasks:
   - action: replace_string #40
     mode: all_vars
     file: 
+      - ./server.cfg
       - ./admins.cfg
       - ./credentials.cfg
       - ./license.cfg
