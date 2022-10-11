@@ -19,8 +19,7 @@ variables:
     projectName: DokusCore                # Framework Project Name
     dbHost: localhost                     # Database Host
     dbUsername: root                      # Database User
-    dbPassword: ""                        # Database Password
-    dbName: DokusCore                     # Database Name        
+    dbPassword: ""                        # Database Password       
 tasks:
   # Download and prepare server configs & database
   - action: download_github #1
