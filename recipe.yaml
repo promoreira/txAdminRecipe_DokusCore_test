@@ -17,9 +17,16 @@ description: A RedM Framework for quality with love :)!
 # Change the values as you need
 variables:
     projectName: DokusCore                # Framework Project Name
-    dbHost: localhost                     # Database Host
-    dbUsername: root                      # Database User
-    dbPassword: ""                        # Database Password       
+    steam_webApiKey: your steam webapi    # https://steamcommunity.com/dev/apikey4
+    discord: your server discord          # Server Discord Link
+    server_tags: your server tags         # Server Tags ex: REDM, RP, Brazil, Shops
+    locale: en-US                         # Server Language
+    load_server_icon: Logo.png            # Server Logo Icon Loading
+    GameBuild: 1436                       # Game Build Version
+    convar: skrt                          # Server Convar
+    banner_detail: https://mmos.com/wp-content/uploads/2019/10/red-dead-redemption-2-arthur-morgan-banner.jpg
+    banner_connecting: https://mmos.com/wp-content/uploads/2019/10/red-dead-redemption-2-arthur-morgan-banner.jpg
+
 tasks:
   # Download and prepare server configs & database
   - action: download_github #1
@@ -66,7 +73,7 @@ tasks:
   - action: query_database #11
     file: ./tmp/DokusCore/db.sql
 
-# Define a folder for DokusZones
+  # Define a folder for DokusZones
   - action: ensure_dir #12
     path: ./resources/[ DokusZones ]
 
@@ -208,8 +215,8 @@ tasks:
   ## DokusCore cleanup
   - action: remove_path #39
     path: ./tmp
-
-# Multiple files replace_string
+    
+  # Multiple files replace_string
   - action: replace_string #40
     mode: all_vars
     file: 
