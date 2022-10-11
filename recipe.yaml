@@ -220,5 +220,8 @@ tasks:
   - action: replace_string #40
     mode: all_vars
     file: 
-      - ./*.cfg
+      - ./admins.cfg
+      - ./redentials.cfg
+      - ./license.cfg
+      - ./mysql.cfg
     
