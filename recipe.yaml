@@ -18,6 +18,7 @@ description: A RedM Framework for quality with love :)!
 variables:
     projectName: DokusCore                # Framework Project Name
     steam_webApiKey: your steam webapi    # https://steamcommunity.com/dev/apikey4
+    steamId: your steamId 64 hex          # https://steamid.pro/
     discord: your server discord          # Server Discord Link
     server_tags: your server tags         # Server Tags ex: REDM, RP, Brazil, Shops
     locale: en-US                         # Server Language
