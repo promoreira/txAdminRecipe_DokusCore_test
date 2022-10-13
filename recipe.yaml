@@ -9,18 +9,18 @@
 #
 $engine: 3
 $onesync: off # Until all the bugs related to it get fixed it will be better keep OnSync OFF
-name: DokusCore-Recipe
+name: DokusCore
 version: 0.6.4
-author: DoKusCore FrameWork Team
+author: DokusTeam - DokusCore.com
 description: A RedM Framework for quality with love :)! 
 
 # Change the values as you need
 variables:
     projectName: DokusCore                # Framework Project Name
-    steam_webApiKey: your steam webapi    # https://steamcommunity.com/dev/apikey4
-    steamId: your steamId 64 hex          # https://steamid.pro/
-    discord: your server discord          # Server Discord Link
-    server_tags: your server tags         # Server Tags ex: REDM, RP, Brazil, Shops
+    steam_webApiKey: ""                   # https://steamcommunity.com/dev/apikey4
+    steamId:                              # https://steamid.pro/
+    discord:                              # Server Discord Link
+    server_tags: RedM, DokusCore          # Server Tags ex: REDM, RP, Brazil, Shops
     locale: en-US                         # Server Language
     load_server_icon: Logo.png            # Server Logo Icon Loading
     GameBuild: 1436                       # Game Build Version
