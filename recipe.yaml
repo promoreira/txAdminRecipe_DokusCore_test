@@ -37,8 +37,8 @@ tasks:
 
   # DoskusCore Server configs
   - action: move_path #2
-    src: ./tmp/_data/
-    dest: ./
+    src: ./tmp/_data
+    dest: ./_data
 
   # DoskusCore Database
   - action: connect_database #10
