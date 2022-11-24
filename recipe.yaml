@@ -139,91 +139,106 @@ tasks:
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Guidance 
   
   - action: download_github #24
+    src: https://github.com/DokusCore/DokusCore--GunStore 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--GunStore 
+  
+  - action: download_github #25
     src: https://github.com/DokusCore/DokusCore--Instruments 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Instruments 
   
-  - action: download_github #25
+  - action: download_github #26
     src: https://github.com/DokusCore/DokusCore--Inventory 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Inventory 
   
-  - action: download_github #26
+  - action: download_github #27
     src: https://github.com/DokusCore/DokusCore--Metabolism 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Metabolism 
   
-  - action: download_github #27
+  - action: download_github #28
     src: https://github.com/DokusCore/DokusCore--NPCMenu 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--NPCMenu 
 
-  - action: download_github #28
+  - action: download_github #29
     src: https://github.com/DokusCore/DokusCore--OneFix 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--OneFix 
+
+  - action: download_github #30
+    src: https://github.com/DokusCore/DokusCore--Scavenger 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Scavenger 
   
-  - action: download_github #29
+  - action: download_github #31
     src: https://github.com/DokusCore/DokusCore--ScratchCards 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--ScratchCards 
   
-  - action: download_github #30
+  - action: download_github #32
     src: https://github.com/DokusCore/DokusCore--ScriptBundle 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--ScriptBundle 
   
-  - action: download_github #31
+  - action: download_github #33
     src: https://github.com/DokusCore/DokusCore--Skins 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Skins 
   
-  - action: download_github #32
+  - action: download_github #34
     src: https://github.com/DokusCore/DokusCore--Spawner 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Spawner 
   
-  - action: download_github #33
+  - action: download_github #35
     src: https://github.com/DokusCore/DokusCore--Stables 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Stables 
   
-  - action: download_github #34
+  - action: download_github #36
     src: https://github.com/DokusCore/DokusCore--Stores 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Stores 
   
-  - action: download_github #35
+  - action: download_github #36
     src: https://github.com/DokusCore/DokusCore--Telegrams 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Telegrams 
   
-  - action: download_github #36
+  - action: download_github #37
     src: https://github.com/DokusCore/DokusCore--Trains 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Trains 
   
-  - action: download_github #37
+  - action: download_github #38
     src: https://github.com/DokusCore/DokusCore--UsableItems 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--UsableItems 
   
-  - action: download_github #38
+  - action: download_github #39
+    src: https://github.com/DokusCore/DokusCore--Weapons 
+    ref: main
+    dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Weapons 
+  
+  - action: download_github #40
     src: https://github.com/DokusCore/DokusCore--WorldEdits 
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--WorldEdits 
   
-  - action: download_github #39
+  - action: download_github #41
     src: https://github.com/DokusCore/DokusCore--Zones
     ref: main
     dest: ./resources/[ Core ]/[ DokusCore ]/DokusCore--Zones 
   
   ## DokusCore cleanup
-  - action: remove_path #40
+  - action: remove_path #42
     path: ./tmp
     
   # Multiple files replace_string
-  - action: replace_string #41
+  - action: replace_string #43
     mode: all_vars
     file: 
       - ./admins.cfg
