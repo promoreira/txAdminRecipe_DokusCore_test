@@ -16,8 +16,8 @@
 
 
 -- Dumping database structure for dokuscore
-CREATE DATABASE IF NOT EXISTS `dokuscore` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `dokuscore`;
+--CREATE DATABASE IF NOT EXISTS `dokuscore` /*!40100 DEFAULT CHARACTER SET latin1 */;
+--USE `dokuscore`;
 
 -- Dumping structure for table dokuscore.animals
 CREATE TABLE IF NOT EXISTS `animals` (
