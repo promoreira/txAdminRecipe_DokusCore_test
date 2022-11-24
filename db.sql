@@ -1,16 +1,38 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Server version:               10.6.9-MariaDB - mariadb.org binary distribution
+-- Server version:               10.4.25-MariaDB - mariadb.org binary distribution
 -- Server OS:                    Win64
--- HeidiSQL Version:             11.3.0.6295
+-- HeidiSQL Version:             12.2.0.6576
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Dumping database structure for dokuscore
+CREATE DATABASE IF NOT EXISTS `dokuscore` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `dokuscore`;
+
+-- Dumping structure for table dokuscore.animals
+CREATE TABLE IF NOT EXISTS `animals` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SteamID` varchar(50) NOT NULL,
+  `CharID` int(11) NOT NULL DEFAULT 0,
+  `Type` varchar(50) NOT NULL DEFAULT '0',
+  `Model` varchar(50) DEFAULT NULL,
+  `Skin` int(11) DEFAULT 0,
+  `XP` int(11) DEFAULT 0,
+  `Meta` longtext DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table dokuscore.animals: ~0 rows (approximately)
 
 -- Dumping structure for table dokuscore.banks
 CREATE TABLE IF NOT EXISTS `banks` (
@@ -23,11 +45,9 @@ CREATE TABLE IF NOT EXISTS `banks` (
   `Gold` float NOT NULL,
   `Synced` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.banks: ~0 rows (approximately)
-/*!40000 ALTER TABLE `banks` DISABLE KEYS */;
-/*!40000 ALTER TABLE `banks` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.blacklist
 CREATE TABLE IF NOT EXISTS `blacklist` (
@@ -45,8 +65,6 @@ CREATE TABLE IF NOT EXISTS `blacklist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.blacklist: ~0 rows (approximately)
-/*!40000 ALTER TABLE `blacklist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `blacklist` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.boats
 CREATE TABLE IF NOT EXISTS `boats` (
@@ -59,11 +77,9 @@ CREATE TABLE IF NOT EXISTS `boats` (
   `Storage` longtext DEFAULT '[]',
   `Coords` longtext DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.boats: ~0 rows (approximately)
-/*!40000 ALTER TABLE `boats` DISABLE KEYS */;
-/*!40000 ALTER TABLE `boats` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.characters
 CREATE TABLE IF NOT EXISTS `characters` (
@@ -81,11 +97,9 @@ CREATE TABLE IF NOT EXISTS `characters` (
   `Skin` varchar(5000) DEFAULT NULL,
   `Clothing` varchar(5000) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.characters: ~0 rows (approximately)
-/*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-/*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.experience
 CREATE TABLE IF NOT EXISTS `experience` (
@@ -101,8 +115,6 @@ CREATE TABLE IF NOT EXISTS `experience` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.experience: ~0 rows (approximately)
-/*!40000 ALTER TABLE `experience` DISABLE KEYS */;
-/*!40000 ALTER TABLE `experience` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.inventory
 CREATE TABLE IF NOT EXISTS `inventory` (
@@ -114,76 +126,9 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `Amount` int(11) DEFAULT NULL,
   `Meta` text DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.inventory: ~0 rows (approximately)
-/*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
-
--- Dumping structure for table dokuscore.items
-CREATE TABLE IF NOT EXISTS `items` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Item` varchar(50) DEFAULT NULL,
-  `Name` varchar(50) DEFAULT NULL,
-  `Type` varchar(50) DEFAULT NULL,
-  `Description` longtext NOT NULL DEFAULT '--',
-  `CTI` varchar(50) DEFAULT NULL,
-  `CA` int(11) DEFAULT NULL,
-  `InvLimit` int(11) DEFAULT NULL,
-  `Metabolism` varchar(50) DEFAULT NULL,
-  `CanPlace` varchar(50) DEFAULT NULL,
-  `UseEvent` varchar(50) DEFAULT 'false',
-  `Hunger` float DEFAULT NULL,
-  `Thirst` float DEFAULT NULL,
-  `Health` int(11) DEFAULT NULL,
-  `Stamina` int(11) DEFAULT NULL,
-  `GHI` int(11) DEFAULT NULL,
-  `GHO` int(11) DEFAULT NULL,
-  `GSI` int(11) DEFAULT NULL,
-  `GSO` int(11) DEFAULT NULL,
-  `Prop` varchar(200) DEFAULT NULL,
-  `PropPos` varchar(200) DEFAULT NULL,
-  `Animation` varchar(200) DEFAULT NULL,
-  `AniTime` varchar(50) DEFAULT NULL,
-  `Event` varchar(100) DEFAULT NULL,
-  `Meta` longtext DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table dokuscore.items: ~30 rows (approximately)
-/*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` (`ID`, `Item`, `Name`, `Type`, `Description`, `CTI`, `CA`, `InvLimit`, `Metabolism`, `CanPlace`, `UseEvent`, `Hunger`, `Thirst`, `Health`, `Stamina`, `GHI`, `GHO`, `GSI`, `GSO`, `Prop`, `PropPos`, `Animation`, `AniTime`, `Event`, `Meta`) VALUES
-	(1, 'carrot', 'Carrot', 'Consumable', 'Its orange! Its healty!', NULL, 0, 10, 'true', 'false', 'false', 5, 2, 0, 0, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(2, 'cigar', 'Cigar', 'Consumable', 'Be the boss, and smoke one of these fine brands!', NULL, 0, 50, 'true', 'false', 'false', -5, -15, -8, -15, 30, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-	(3, 'cigarette', 'Cigarette', 'Consumable', 'Back in the day, they thought this was healty! For Sure!', NULL, 0, 100, 'true', 'false', 'false', -5, -15, -5, -13, 25, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-	(4, 'cigarette_box', 'Cigarette Box', 'Consumable', 'A box containing 25 cigarettes', 'cigarette', 25, 5, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(5, 'coffee', 'Coffee', 'Consumable', 'That mornig brew you can\'t go without', NULL, 0, 5, 'true', 'false', 'false', -10, 20, 3, 20, 20, 10, 30, 60, 'P_MUGCOFFEE01X', 'P_MUGCOFFEE01X_PH_R_HAND', 'DRINK_COFFEE_HOLD', NULL, NULL, NULL),
-	(6, 'egg', 'Eggs', 'Consumable', 'I think it has something to do with a chicken? hmmmm', NULL, 0, 50, 'true', 'false', 'false', 5, -5, 3, 4, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(7, 'egg_box', 'Egg Box', 'Consumable', 'A box containing 10 eggs', 'eggs', 10, 3, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(8, 'gold_bar', 'Goldbar', 'Valuta', 'That mineral that everyone is killing each other for, but then refined into a golden bar', 'gold_coin', 35, 3, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(9, 'gold_nugget', 'Gold Nugget', 'Mineral', 'Unrefined golden nuggest. Don\'t you wish yours where of gold?', NULL, 0, 120, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(10, 'gold_coin', 'Gold Coin', 'Valuta', 'A thing you pay with, but you don\'t want to pay with. Its way to shiny to give away', NULL, 0, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(11, 'silver_nugget', 'Silver Nugget', 'Mineral', 'Unrefined silver nuggest. Seriously, don\'t even bother, gold is much better', 'silver_coin', 50, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(12, 'silver_coin', 'Silver Coin', 'Valuta', 'A thing you pay with, but most also eat with. weird world we live in don\'t you think?', NULL, 0, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(13, 'gold_pan', 'Gold Pan', 'Tool', 'A device to filter gold nuggest out of the water and dirt', NULL, 0, 2, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(14, 'horsebrush', 'Horse Brush', 'Tool', 'A simple tool to keep your horse from getting dirty. Soooo Dirty!!!', NULL, 0, 1, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(15, 'lockpick', 'Lock Pick', 'Tool', 'For those that do not value other people belongings, then this is your tool!', NULL, 0, 5, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(16, 'meat_cooked', 'Cooked Meat', 'Consumable', 'That food that make men become beasts. Just throw the meat to them and then RUN!', NULL, 0, 10, 'true', 'false', 'false', 30, -10, 10, 25, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(17, 'meat_uncooked', 'Uncooked Meat', 'Consumable', 'It\'s meat, it\'s uncooked! You should try to eat it, maybe you wound die from it!', 'meat_cooked', 1, 10, 'true', 'false', 'false', 15, -20, -25, 12, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(18, 'water_clean', 'Clean Water', 'Consumable', 'Around 80% of your body is made out of water, at least that is what the future people whisper in my ears.', NULL, 0, 10, 'true', 'false', 'false', 0, 20, 0, 0, 0, 0, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_A', NULL, NULL, NULL),
-	(19, 'water_dirty', 'Dirty Water', 'Consumable', 'Cook it before your drink it!', 'water_clean', 1, 10, 'true', 'false', 'false', 0, 20, -10, 0, 0, 0, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_A', NULL, NULL, NULL),
-	(20, 'campfire', 'Campfire', 'Deployable', 'Something to keep you warm at night. If you had a girlfriend, you\'ve would not need one!', NULL, 0, 2, 'true', 'true', 'false', -5, -10, 0, -20, 0, 0, 0, 0, 'p_campfire02x', NULL, 'WORLD_HUMAN_CROUCH_INSPECT', '13000', NULL, NULL),
-	(21, 'whiskey', 'Whiskey', 'Consumable', 'Try to drink this, and walk in a strait line to your horse. I dare you!', NULL, 0, 10, 'true', 'false', 'false', -10, -15, 10, -15, 60, 60, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_TRANS', NULL, NULL, NULL),
-	(22, 'blueberry', 'Blueberry', 'Consumable', 'Its a berry that is not red, but blue!', NULL, 0, 500, 'true', 'false', 'false', 2, 2, 2, 2, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(23, 'blackberry', 'Blackberry', 'Consumable', 'Its a berry that is not blue, but black!', NULL, 0, 500, 'true', 'false', 'false', 2, 2, 2, 2, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(24, 'apple', 'Apple', 'Consumable', 'Oh Oh Adam, what did you do!', NULL, 0, 150, 'true', 'false', 'false', 5, 5, 5, 5, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(25, 'orange', 'Orange', 'Consumable', 'In the old days it was a fruit. In the future, they call it Donald Trump', NULL, 0, 150, 'true', 'false', 'false', 5, 10, 5, 5, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
-	(26, 'trumpet', 'Trumpet', 'Instrument', 'Its from brass, its annoying, don\'t buy it, don\'t play it!', NULL, 0, 1, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'WORLD_HUMAN_TRUMPET', NULL, NULL, NULL),
-	(27, 'scratchcard', 'Scratch Card', 'Consumable', 'Everyone could be a winner!', NULL, 0, 10, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:ScratchCards:Show:Random", "Delete":"true"}', NULL),
-	(28, 'scratchprize', 'Scratch Winning Card', 'Consumable', 'A winning scratch card', NULL, 0, 10, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:ScratchCards:Get:Rewards"}', NULL),
-	(29, 'rowboat', 'Row Boat', 'Boat', 'At least it stays afloat', NULL, 0, 0, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{ "CanSell":"true", "CanBuy":"true", "SellPrice":10.0, "BuyPrice":15.0 }'),
-	(30, 'rowboatSwamp', 'Swamp Row Boat', 'Boat', 'You\'re at least safe from Aligators haha', NULL, 0, 0, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{ "CanSell":"true", "CanBuy":"true", "SellPrice":15.0, "BuyPrice":30.0 }');
-/*!40000 ALTER TABLE `items` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.jobs
 CREATE TABLE IF NOT EXISTS `jobs` (
@@ -199,8 +144,6 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.jobs: ~0 rows (approximately)
-/*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.metabolism
 CREATE TABLE IF NOT EXISTS `metabolism` (
@@ -211,11 +154,9 @@ CREATE TABLE IF NOT EXISTS `metabolism` (
   `Hunger` float NOT NULL DEFAULT 100,
   `Thirst` float NOT NULL DEFAULT 100,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.metabolism: ~0 rows (approximately)
-/*!40000 ALTER TABLE `metabolism` DISABLE KEYS */;
-/*!40000 ALTER TABLE `metabolism` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.outfits
 CREATE TABLE IF NOT EXISTS `outfits` (
@@ -225,11 +166,9 @@ CREATE TABLE IF NOT EXISTS `outfits` (
   `Name` text DEFAULT NULL,
   `Outfit` longtext NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.outfits: ~0 rows (approximately)
-/*!40000 ALTER TABLE `outfits` DISABLE KEYS */;
-/*!40000 ALTER TABLE `outfits` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.settings
 CREATE TABLE IF NOT EXISTS `settings` (
@@ -240,11 +179,9 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `Volume` float DEFAULT 0.3,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Steam` (`Steam`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.settings: ~0 rows (approximately)
-/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.stables
 CREATE TABLE IF NOT EXISTS `stables` (
@@ -266,11 +203,9 @@ CREATE TABLE IF NOT EXISTS `stables` (
   `Dirt` int(10) unsigned DEFAULT NULL,
   `Price` float DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table dokuscore.stables: ~0 rows (approximately)
-/*!40000 ALTER TABLE `stables` DISABLE KEYS */;
-/*!40000 ALTER TABLE `stables` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.storages
 CREATE TABLE IF NOT EXISTS `storages` (
@@ -283,49 +218,9 @@ CREATE TABLE IF NOT EXISTS `storages` (
   `Coords` varchar(150) DEFAULT NULL,
   `Expiration` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.storages: ~0 rows (approximately)
-/*!40000 ALTER TABLE `storages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `storages` ENABLE KEYS */;
-
--- Dumping structure for table dokuscore.stores
-CREATE TABLE IF NOT EXISTS `stores` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Item` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  `Name` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '--',
-  `Type` varchar(50) COLLATE utf8mb4_bin DEFAULT '--',
-  `Description` longtext COLLATE utf8mb4_bin DEFAULT '--',
-  `Limit` int(11) NOT NULL DEFAULT 25,
-  `Buy` float NOT NULL DEFAULT 0.1,
-  `Sell` float NOT NULL DEFAULT 0.05,
-  `ItemData` longtext COLLATE utf8mb4_bin DEFAULT '--',
-  `Stock` longtext COLLATE utf8mb4_bin DEFAULT '--',
-  `Stores` longtext COLLATE utf8mb4_bin DEFAULT '--',
-  `Taxation` longtext COLLATE utf8mb4_bin DEFAULT '--',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
-
--- Dumping data for table dokuscore.stores: ~16 rows (approximately)
-/*!40000 ALTER TABLE `stores` DISABLE KEYS */;
-INSERT INTO `stores` (`ID`, `Item`, `Name`, `Type`, `Description`, `Limit`, `Buy`, `Sell`, `ItemData`, `Stock`, `Stores`, `Taxation`) VALUES
-	(1, 'carrot', 'Carrot', 'Consumable', 'Its orange! Its healty!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(2, 'cigar', 'Cigar', 'Consumable', 'Be the boss, and smoke one of these fine brands!', 50, 0.08, 0.03, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(3, 'cigarette', 'Cigarette', 'Consumable', 'Back in the day, they thought this was healty! For Sure!', 50, 0.06, 0.02, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(4, 'cigarette_box', 'Cigarette Box', 'Consumable', 'A box containing 25 cigarettes', 50, 1.7, 1, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(5, 'coffee', 'Coffee', 'Consumable', 'That mornig brew you can\'t go without', 75, 0.1, 0.05, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(6, 'egg', 'Eggs', 'Consumable', 'I think it has something to do with a chicken? hmmmm', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(7, 'egg_box', 'Egg Box', 'Consumable', 'A box containing 10 eggs', 25, 0.22, 0.1, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(8, 'gold_pan', 'Gold Pan', 'Tool', 'A device to filter gold nuggest out of the water and dirt', 10, 5.75, 2.35, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(9, 'meat_cooked', 'Cooked Meat', 'Consumable', 'That food that make men become beasts. Just throw the meat to them and then RUN!', 75, 0.35, 0.15, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(10, 'water_clean', 'Clean Water', 'Consumable', 'Around 80% of your body is made out of water, at least that is what the future people whisper in my ears.', 35, 0.17, 0.09, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(11, 'whiskey', 'Whiskey', 'Consumable', 'Try to drink this, and walk in a strait line to your horse. I dare you!', 50, 1.2, 0.6, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(12, 'blueberry', 'Blueberry', 'Consumable', 'Its a berry that is not red, but blue!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(13, 'blackberry', 'Blackberry', 'Consumable', 'Its a berry that is not blue, but black!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(14, 'apple', 'Apple', 'Consumable', 'Oh Oh Adam, what did you do!', 80, 0.04, 0.02, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(15, 'orange', 'Orange', 'Consumable', 'In the old days it was a fruit. In the future, they call it Donald Trump', 25, 0.17, 0.08, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
-	(16, 'trumpet', 'Trumpet', 'Instrument', 'Its from brass, its annoying, don\'t buy it, don\'t play it!', 10, 12.75, 5.7, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]');
-/*!40000 ALTER TABLE `stores` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -338,11 +233,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `MLive` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Steam` (`Steam`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.users: ~0 rows (approximately)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table dokuscore.weapons
+CREATE TABLE IF NOT EXISTS `weapons` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SteamID` varchar(50) DEFAULT NULL,
+  `CharID` int(11) DEFAULT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `Type` varchar(50) DEFAULT NULL,
+  `Hash` varchar(50) DEFAULT NULL,
+  `Hex` varchar(50) DEFAULT NULL,
+  `Ammo_Regular` int(11) DEFAULT NULL,
+  `Equiped` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Dumping data for table dokuscore.weapons: ~0 rows (approximately)
 
 -- Dumping structure for table dokuscore.whitelist
 CREATE TABLE IF NOT EXISTS `whitelist` (
@@ -357,32 +266,6 @@ CREATE TABLE IF NOT EXISTS `whitelist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore.whitelist: ~0 rows (approximately)
-/*!40000 ALTER TABLE `whitelist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `whitelist` ENABLE KEYS */;
-
--- Dumping structure for table dokuscore.zones
-CREATE TABLE IF NOT EXISTS `zones` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) DEFAULT NULL,
-  `Type` varchar(50) DEFAULT NULL,
-  `City` varchar(50) DEFAULT NULL,
-  `GD` int(11) DEFAULT 30,
-  `Poly` int(11) DEFAULT NULL,
-  `Grid` int(11) DEFAULT NULL,
-  `MinZ` float DEFAULT NULL,
-  `MaxZ` float DEFAULT NULL,
-  `OnEnter` longtext DEFAULT NULL,
-  `OnExit` longtext DEFAULT NULL,
-  `Vectors` longtext DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- Dumping data for table dokuscore.zones: ~2 rows (approximately)
-/*!40000 ALTER TABLE `zones` DISABLE KEYS */;
-INSERT INTO `zones` (`ID`, `Name`, `Type`, `City`, `GD`, `Poly`, `Grid`, `MinZ`, `MaxZ`, `OnEnter`, `OnExit`, `Vectors`) VALUES
-	(1, 'Stables', 'Zone', 'Valentine', 30, 0, 0, 115.16, 120.16, '[{"Event":"DokusCore:Stables:SayHello","Type":"client","Meta":[]}]', '[{"Event":"DokusCore:Stables:SayGoodbye","Type":"client","Meta":[]}]', '[{"x":-361.3900146484375,"y":780.2999877929688},{"x":-362.6499938964844,"y":794.2999877929688},{"x":-377.3800048828125,"y":793.7999877929688},{"x":-376.2200012207031,"y":779.2000122070313}]'),
-	(2, 'Stables', 'NPC', 'Valentine', 18, 0, 0, 115, 117.25, '[{"Event":"DokusCore:Stables:Start","Meta":[],"Type":"client"}]', '[{"Event":"DokusCore:Stables:Stop","Meta":[],"Type":"client"}]', '[{"x":-366.6400146484375,"y":790.5},{"x":-363.6300048828125,"y":789.7000122070313},{"x":-363.92999267578127,"y":792.6199951171875},{"x":-366.7900085449219,"y":792.6199951171875}]');
-/*!40000 ALTER TABLE `zones` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore._data_clothes_female
 CREATE TABLE IF NOT EXISTS `_data_clothes_female` (
@@ -396,7 +279,6 @@ CREATE TABLE IF NOT EXISTS `_data_clothes_female` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5448 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore._data_clothes_female: ~5,617 rows (approximately)
-/*!40000 ALTER TABLE `_data_clothes_female` DISABLE KEYS */;
 INSERT INTO `_data_clothes_female` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUES
 	(1, 0, 'eyewear', '25757734', '98860198', ''),
 	(2, 0, 'eyewear', '232285778', '98860198', ''),
@@ -5845,7 +5727,6 @@ INSERT INTO `_data_clothes_female` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Nam
 	(5445, 0, 'belt_buckles', '4069732429', '4209578111', 'clothing_item_f_season_buckle_003_var_003'),
 	(5446, 0, 'belt_buckles', '2794616614', '4209578111', 'clothing_item_f_season_buckle_001_var_004'),
 	(5447, 0, 'belt_buckles', '3839726818', '4209578111', 'clothing_item_f_season_buckle_003_var_004');
-/*!40000 ALTER TABLE `_data_clothes_female` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore._data_clothes_male
 CREATE TABLE IF NOT EXISTS `_data_clothes_male` (
@@ -5859,7 +5740,6 @@ CREATE TABLE IF NOT EXISTS `_data_clothes_male` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5381 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore._data_clothes_male: ~5,544 rows (approximately)
-/*!40000 ALTER TABLE `_data_clothes_male` DISABLE KEYS */;
 INSERT INTO `_data_clothes_male` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUES
 	(1, 0, 'eyewear', '143997640', '98860198', ''),
 	(2, 0, 'eyewear', '442424923', '98860198', ''),
@@ -11241,7 +11121,6 @@ INSERT INTO `_data_clothes_male` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`
 	(5378, 0, 'belt_buckles', '1772586428', '4209578111', 'clothing_item_m_season_buckle_003_var_004'),
 	(5379, 0, 'belt_buckles', '2553701081', '4209578111', 'clothing_item_m_season_buckle_003_var_003'),
 	(5380, 0, 'belt_buckles', '1635771202', '4209578111', 'clothing_m_r4_buckle_000_tint_001');
-/*!40000 ALTER TABLE `_data_clothes_male` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore._data_horse
 CREATE TABLE IF NOT EXISTS `_data_horse` (
@@ -11255,7 +11134,6 @@ CREATE TABLE IF NOT EXISTS `_data_horse` (
 ) ENGINE=InnoDB AUTO_INCREMENT=749 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore._data_horse: ~748 rows (approximately)
-/*!40000 ALTER TABLE `_data_horse` DISABLE KEYS */;
 INSERT INTO `_data_horse` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUES
 	(1, 0, 'saddle_horns', '59106054', '88372018', ''),
 	(2, 0, 'saddle_horns', '685478682', '88372018', ''),
@@ -12005,7 +11883,6 @@ INSERT INTO `_data_horse` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUE
 	(746, 0, 'horse_bedrolls', '1266550546', '4021492001', 'HORSE_EQUIPMENT_HORSE_BEDROLL_02_USED_000'),
 	(747, 0, 'horse_bedrolls', '2216458314', '4021492001', 'HORSE_EQUIPMENT_HORSE_BEDROLL_02_USED_003'),
 	(748, 0, 'horse_bedrolls', '659832507', '4021492001', 'HORSE_EQUIPMENT_HORSE_BEDROLL_02_USED_002');
-/*!40000 ALTER TABLE `_data_horse` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore._data_skin_female
 CREATE TABLE IF NOT EXISTS `_data_skin_female` (
@@ -12019,7 +11896,6 @@ CREATE TABLE IF NOT EXISTS `_data_skin_female` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1904350297 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore._data_skin_female: ~702 rows (approximately)
-/*!40000 ALTER TABLE `_data_skin_female` DISABLE KEYS */;
 INSERT INTO `_data_skin_female` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUES
 	(6, 0, 'BODIES_UPPER', '2458758467', '188311241', 'CLOTHING_ITEM_F_BODIES_UPPER_001_V_001'),
 	(7, 0, 'BODIES_UPPER', '2161838558', '188311241', 'CLOTHING_ITEM_F_BODIES_UPPER_001_V_002'),
@@ -12723,7 +12599,6 @@ INSERT INTO `_data_skin_female` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`)
 	(717, 0, 'eyes', '2210319017', '3928274014', 'CLOTHING_ITEM_F_EYES_001_TINT_013'),
 	(718, 0, 'eyes', '2451302243', '3928274014', 'CLOTHING_ITEM_F_EYES_001_TINT_014'),
 	(719, 0, 'BODIES_UPPER', '1218117202', '188311241', '');
-/*!40000 ALTER TABLE `_data_skin_female` ENABLE KEYS */;
 
 -- Dumping structure for table dokuscore._data_skin_male
 CREATE TABLE IF NOT EXISTS `_data_skin_male` (
@@ -12737,7 +12612,6 @@ CREATE TABLE IF NOT EXISTS `_data_skin_male` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1496 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table dokuscore._data_skin_male: ~1,074 rows (approximately)
-/*!40000 ALTER TABLE `_data_skin_male` DISABLE KEYS */;
 INSERT INTO `_data_skin_male` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) VALUES
 	(1, 0, 'BODIES_UPPER', '543187419', '188311241', ''),
 	(2, 0, 'BODIES_UPPER', '3212342147', '188311241', 'CLOTHING_ITEM_M_BODIES_UPPER_001_V_002'),
@@ -13813,8 +13687,175 @@ INSERT INTO `_data_skin_male` (`ID`, `Price`, `Type`, `Hash`, `cHash`, `Name`) V
 	(1084, 0, 'beard', '484622924', '4160842698', 'CLOTHING_ITEM_M_BEARD_018_SALT_PEPPER'),
 	(1085, 0, 'beard', '1050007297', '4160842698', 'CLOTHING_ITEM_M_BEARD_018_STRAWBERRY_BLONDE'),
 	(1086, 0, 'beard', '261793413', '4160842698', 'CLOTHING_ITEM_M_BEARD_018_UNCLE_GREY');
-/*!40000 ALTER TABLE `_data_skin_male` ENABLE KEYS */;
 
+-- Dumping structure for table dokuscore._items
+CREATE TABLE IF NOT EXISTS `_items` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Item` varchar(50) DEFAULT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `Type` varchar(50) DEFAULT NULL,
+  `Description` longtext NOT NULL DEFAULT '--',
+  `CTI` varchar(50) DEFAULT NULL,
+  `CA` int(11) DEFAULT 0,
+  `InvLimit` int(11) DEFAULT 100,
+  `Metabolism` varchar(50) DEFAULT 'false',
+  `CanPlace` varchar(50) DEFAULT 'false',
+  `UseEvent` varchar(50) DEFAULT 'false',
+  `Hunger` float DEFAULT NULL,
+  `Thirst` float DEFAULT NULL,
+  `Health` int(11) DEFAULT NULL,
+  `Stamina` int(11) DEFAULT NULL,
+  `GHI` int(11) DEFAULT NULL,
+  `GHO` int(11) DEFAULT NULL,
+  `GSI` int(11) DEFAULT NULL,
+  `GSO` int(11) DEFAULT NULL,
+  `Prop` varchar(200) DEFAULT NULL,
+  `PropPos` varchar(200) DEFAULT NULL,
+  `Animation` varchar(200) DEFAULT NULL,
+  `AniTime` varchar(50) DEFAULT NULL,
+  `Event` varchar(100) DEFAULT NULL,
+  `Meta` longtext DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table dokuscore._items: ~68 rows (approximately)
+INSERT INTO `_items` (`ID`, `Item`, `Name`, `Type`, `Description`, `CTI`, `CA`, `InvLimit`, `Metabolism`, `CanPlace`, `UseEvent`, `Hunger`, `Thirst`, `Health`, `Stamina`, `GHI`, `GHO`, `GSI`, `GSO`, `Prop`, `PropPos`, `Animation`, `AniTime`, `Event`, `Meta`) VALUES
+	(1, 'carrot', 'Carrot', 'Consumable', 'Its orange! Its healty!', NULL, 0, 10, 'true', 'false', 'false', 5, 2, 0, 0, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(2, 'cigar', 'Cigar', 'Consumable', 'Be the boss, and smoke one of these fine brands!', NULL, 0, 50, 'true', 'false', 'false', -5, -15, -8, -15, 30, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(3, 'cigarette', 'Cigarette', 'Consumable', 'Back in the day, they thought this was healty! For Sure!', NULL, 0, 100, 'true', 'false', 'false', -5, -15, -5, -13, 25, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(4, 'cigarette_box', 'Cigarette Box', 'Consumable', 'A box containing 25 cigarettes', 'cigarette', 25, 5, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(5, 'coffee', 'Coffee', 'Consumable', 'That mornig brew you can\'t go without', NULL, 0, 5, 'true', 'false', 'false', -10, 20, 3, 20, 20, 10, 30, 60, 'P_MUGCOFFEE01X', 'P_MUGCOFFEE01X_PH_R_HAND', 'DRINK_COFFEE_HOLD', NULL, NULL, NULL),
+	(6, 'egg', 'Eggs', 'Consumable', 'I think it has something to do with a chicken? hmmmm', NULL, 0, 50, 'true', 'false', 'false', 5, -5, 3, 4, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(7, 'egg_box', 'Egg Box', 'Consumable', 'A box containing 10 eggs', 'eggs', 10, 3, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(8, 'gold_bar', 'Goldbar', 'Valuta', 'That mineral that everyone is killing each other for, but then refined into a golden bar', 'gold_coin', 35, 3, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(9, 'gold_nugget', 'Gold Nugget', 'Mineral', 'Unrefined golden nuggest. Don\'t you wish yours where of gold?', NULL, 0, 120, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(10, 'gold_coin', 'Gold Coin', 'Valuta', 'A thing you pay with, but you don\'t want to pay with. Its way to shiny to give away', NULL, 0, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(11, 'silver_nugget', 'Silver Nugget', 'Mineral', 'Unrefined silver nuggest. Seriously, don\'t even bother, gold is much better', 'silver_coin', 50, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(12, 'silver_coin', 'Silver Coin', 'Valuta', 'A thing you pay with, but most also eat with. weird world we live in don\'t you think?', NULL, 0, 200, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(13, 'gold_pan', 'Gold Pan', 'Tool', 'A device to filter gold nuggest out of the water and dirt', NULL, 0, 2, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(14, 'horsebrush', 'Horse Brush', 'Tool', 'A simple tool to keep your horse from getting dirty. Soooo Dirty!!!', NULL, 0, 1, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(15, 'lockpick', 'Lock Pick', 'Tool', 'For those that do not value other people belongings, then this is your tool!', NULL, 0, 5, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(16, 'meat_cooked', 'Cooked Meat', 'Consumable', 'That food that make men become beasts. Just throw the meat to them and then RUN!', NULL, 0, 10, 'true', 'false', 'false', 30, -10, 10, 25, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(17, 'meat_uncooked', 'Uncooked Meat', 'Consumable', 'It\'s meat, it\'s uncooked! You should try to eat it, maybe you wound die from it!', 'meat_cooked', 1, 10, 'true', 'false', 'false', 15, -20, -25, 12, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(18, 'water_clean', 'Clean Water', 'Consumable', 'Around 80% of your body is made out of water, at least that is what the future people whisper in my ears.', NULL, 0, 10, 'true', 'false', 'false', 0, 20, 0, 0, 0, 0, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_A', NULL, NULL, NULL),
+	(19, 'water_dirty', 'Dirty Water', 'Consumable', 'Cook it before your drink it!', 'water_clean', 1, 10, 'true', 'false', 'false', 0, 20, -10, 0, 0, 0, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_A', NULL, NULL, NULL),
+	(20, 'campfire', 'Campfire', 'Deployable', 'Something to keep you warm at night. If you had a girlfriend, you\'ve would not need one!', NULL, 0, 2, 'true', 'true', 'false', -5, -10, 0, -20, 0, 0, 0, 0, 'p_campfire02x', NULL, 'WORLD_HUMAN_CROUCH_INSPECT', '13000', NULL, NULL),
+	(21, 'whiskey', 'Whiskey', 'Consumable', 'Try to drink this, and walk in a strait line to your horse. I dare you!', NULL, 0, 10, 'true', 'false', 'false', -10, -15, 10, -15, 60, 60, 0, 0, 'p_bottleJD01x', 'p_bottleJD01x_ph_r_hand', 'DRINK_BOTTLE@Bottle_Cylinder_D1-3_H30-5_Neck_A13_B2-5_CHUG_TRANS', NULL, NULL, NULL),
+	(22, 'blueberry', 'Blueberry', 'Consumable', 'Its a berry that is not red, but blue!', NULL, 0, 500, 'true', 'false', 'false', 2, 2, 2, 2, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(23, 'blackberry', 'Blackberry', 'Consumable', 'Its a berry that is not blue, but black!', NULL, 0, 500, 'true', 'false', 'false', 2, 2, 2, 2, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(24, 'apple', 'Apple', 'Consumable', 'Oh Oh Adam, what did you do!', NULL, 0, 150, 'true', 'false', 'false', 5, 5, 5, 5, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(25, 'orange', 'Orange', 'Consumable', 'In the old days it was a fruit. In the future, they call it Donald Trump', NULL, 0, 150, 'true', 'false', 'false', 5, 10, 5, 5, 0, 0, 0, 0, NULL, NULL, 'EAT_MULTI_BITE_FOOD_SPHERE_D8-2_SANDWICH_QUICK_LEFT_HAND', NULL, NULL, NULL),
+	(26, 'trumpet', 'Trumpet', 'Instrument', 'Its from brass, its annoying, don\'t buy it, don\'t play it!', NULL, 0, 1, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'WORLD_HUMAN_TRUMPET', NULL, NULL, NULL),
+	(27, 'scratchcard', 'Scratch Card', 'Consumable', 'Everyone could be a winner!', NULL, 0, 10, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:ScratchCards:Show:Random", "Delete":"true"}', NULL),
+	(30, 'scratchprize', 'Scratch Winning Card', 'Consumable', 'A winning scratch card', NULL, 0, 10, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:ScratchCards:Get:Rewards"}', NULL),
+	(31, 'rowboat', 'Row Boat', 'Boat', 'At least it stays afloat', NULL, 0, 0, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{ "CanSell":"true", "CanBuy":"true", "SellPrice":10.0, "BuyPrice":15.0 }'),
+	(32, 'rowboatSwamp', 'Swamp Row Boat', 'Boat', 'You\'re at least safe from Aligators haha', NULL, 0, 0, 'false', 'false', 'false', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{ "CanSell":"true", "CanBuy":"true", "SellPrice":15.0, "BuyPrice":30.0 }'),
+	(34, 'chanterelles', 'Chanterelles', 'Herbs', '--', NULL, 0, 100, 'true', 'false', 'false', 7, -10, -20, 20, 30, 30, 30, 30, NULL, NULL, NULL, NULL, NULL, NULL),
+	(35, 'currant', 'Currant', 'Herbs', '--', NULL, 0, 100, 'true', 'false', 'false', -10, -20, 10, 10, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(36, 'oregano', 'Oregano', 'Herbs', '--', NULL, 0, 100, 'true', 'false', 'false', 0, -15, 15, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(37, 'wintergreen_berry', 'Wintergreen Berry', 'Consumable', '--', NULL, 0, 100, 'true', 'false', 'false', 5, 9, 2, 5, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(38, 'vanilla_flower', 'Vanilla Flower', 'Herbs', '--', NULL, 0, 100, 'true', 'false', 'false', 3, -7, 7, 15, 10, 20, 10, 20, NULL, NULL, NULL, NULL, NULL, NULL),
+	(39, 'evergreen_huckleberry', 'Evergreen Huckleberry', 'Herbs', '--', NULL, 0, 100, 'true', 'false', 'false', 5, 5, 5, 5, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+	(40, 'weapon_revolver_cattleman', 'Cattleman Revolver', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(41, 'weapon_revolver_doubleaction', 'Double Action Revolver', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(42, 'weapon_repeater_carbine', 'Carbine Repeater', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(43, 'weapon_repeater_winchester', 'Winchester Repeater', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(44, 'weapon_repeater_evans', 'Evans Repeater', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(45, 'weapon_repeater_henry', 'Henry Repeater', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(46, 'weapon_rifle_varmint', 'Varmint Rifle', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(47, 'weapon_rifle_springfield', 'Springfield Rifle', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(48, 'weapon_rifle_boltaction', 'Boltaction Rifle', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(49, 'weapon_sniperrifle_rollingblock', 'Rollingback Sniper', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(50, 'weapon_sniperrifle_carcano', 'Carcano Sniper', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(51, 'weapon_shotgun_sawedoff', 'Saweoff Shotgun', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(52, 'weapon_shotgun_doublebarrel', 'Double Barrel Shotgun', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(53, 'weapon_shotgun_pump', 'Pump Action Shotgun', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(54, 'weapon_shotgun_repeating', 'Repeater Shotgun', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(55, 'weapon_bow', 'Bow', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(56, 'weapon_revolver_schofield', 'Schofield Revolver', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(57, 'weapon_revolver_lemat', 'Lemat  Revolver', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(58, 'weapon_pistol_volcanic', 'Volcanic  Revolver', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(59, 'weapon_pistol_mauser', 'Mauser Pistol', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(60, 'weapon_pistol_semiauto', 'Semi Automatic Pistol', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Secondary"}', NULL),
+	(61, 'weapon_shotgun_semiauto', 'Semi Automatic Shotgun', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Primary"}', NULL),
+	(62, 'weapon_melee_hatchet', 'Hatchet', 'Tool', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:UsableItems:Tools:Equipt"}', NULL),
+	(63, 'weapon_melee_knife', 'Knife', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Melee"}', NULL),
+	(64, 'weapon_melee_machete', 'Machete', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Melee"}', NULL),
+	(65, 'weapon_lasso', 'Lasso', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Throwable"}', NULL),
+	(66, 'weapon_thrown_throwing_knives', 'Throwing Knives', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Throwable"}', NULL),
+	(67, 'weapon_thrown_tomahawk', 'Throwing Tomahawk', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Throwable"}', NULL),
+	(68, 'weapon_thrown_dynamite', 'Throwing Dynamite', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Throwable"}', NULL),
+	(69, 'weapon_thrown_molotov', 'Throwing Molotov', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Throwable"}', NULL),
+	(70, 'weapon_melee_lantern', 'Lantern', 'Tool', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:UsableItems:Tools:Equipt"}', NULL),
+	(71, 'weapon_melee_broken_sword', 'Broken Sword', 'Weapon', '--', NULL, 0, 5, 'false', 'false', 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{"Type":"Client", "Event":"DokusCore:GunStore:Weapon:Equipt", "wType":"Melee"}', NULL);
+
+-- Dumping structure for table dokuscore._stores
+CREATE TABLE IF NOT EXISTS `_stores` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Item` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `Name` varchar(50) COLLATE utf8mb4_bin NOT NULL DEFAULT '--',
+  `Type` varchar(50) COLLATE utf8mb4_bin DEFAULT '--',
+  `Description` longtext COLLATE utf8mb4_bin DEFAULT '--',
+  `Limit` int(11) NOT NULL DEFAULT 25,
+  `Buy` float NOT NULL DEFAULT 0.1,
+  `Sell` float NOT NULL DEFAULT 0.05,
+  `ItemData` longtext COLLATE utf8mb4_bin DEFAULT '--',
+  `Stock` longtext COLLATE utf8mb4_bin DEFAULT '--',
+  `Stores` longtext COLLATE utf8mb4_bin DEFAULT '--',
+  `Taxation` longtext COLLATE utf8mb4_bin DEFAULT '--',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table dokuscore._stores: ~17 rows (approximately)
+INSERT INTO `_stores` (`ID`, `Item`, `Name`, `Type`, `Description`, `Limit`, `Buy`, `Sell`, `ItemData`, `Stock`, `Stores`, `Taxation`) VALUES
+	(1, 'carrot', 'Carrot', 'Consumable', 'Its orange! Its healty!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(2, 'cigar', 'Cigar', 'Consumable', 'Be the boss, and smoke one of these fine brands!', 50, 0.08, 0.03, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(3, 'cigarette', 'Cigarette', 'Consumable', 'Back in the day, they thought this was healty! For Sure!', 50, 0.06, 0.02, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(4, 'cigarette_box', 'Cigarette Box', 'Consumable', 'A box containing 25 cigarettes', 50, 1.7, 1, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(5, 'coffee', 'Coffee', 'Consumable', 'That mornig brew you can\'t go without', 75, 0.1, 0.05, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(6, 'egg', 'Eggs', 'Consumable', 'I think it has something to do with a chicken? hmmmm', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(7, 'egg_box', 'Egg Box', 'Consumable', 'A box containing 10 eggs', 25, 0.22, 0.1, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(8, 'gold_pan', 'Gold Pan', 'Tool', 'A device to filter gold nuggest out of the water and dirt', 10, 5.75, 2.35, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(9, 'meat_cooked', 'Cooked Meat', 'Consumable', 'That food that make men become beasts. Just throw the meat to them and then RUN!', 75, 0.35, 0.15, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(10, 'water_clean', 'Clean Water', 'Consumable', 'Around 80% of your body is made out of water, at least that is what the future people whisper in my ears.', 35, 0.17, 0.09, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(11, 'whiskey', 'Whiskey', 'Consumable', 'Try to drink this, and walk in a strait line to your horse. I dare you!', 50, 1.2, 0.6, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(12, 'blueberry', 'Blueberry', 'Consumable', 'Its a berry that is not red, but blue!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(13, 'blackberry', 'Blackberry', 'Consumable', 'Its a berry that is not blue, but black!', 100, 0.02, 0.01, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(14, 'apple', 'Apple', 'Consumable', 'Oh Oh Adam, what did you do!', 80, 0.04, 0.02, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(15, 'orange', 'Orange', 'Consumable', 'In the old days it was a fruit. In the future, they call it Donald Trump', 25, 0.17, 0.08, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(16, 'trumpet', 'Trumpet', 'Instrument', 'Its from brass, its annoying, don\'t buy it, don\'t play it!', 10, 12.75, 5.7, '[{"Sell":0.01,"Buy":0.02,"Store":"Valentine"},{"Sell":0.01,"Buy":0.02,"Store":"SaintDenis"},{"Sell":0.01,"Buy":0.02,"Store":"Blackwater"},{"Sell":0.01,"Buy":0.02,"Store":"Tumbleweed"},{"Sell":0.01,"Buy":0.02,"Store":"Rhodes"},{"Sell":0.01,"Buy":0.02,"Store":"Armadillo"},{"Sell":0.01,"Buy":0.02,"Store":"Strawberry"}]', '[{"Stock":100,"Store":"Valentine"},{"Stock":100,"Store":"SaintDenis"},{"Stock":100,"Store":"Blackwater"},{"Stock":100,"Store":"Tumbleweed"},{"Stock":100,"Store":"Rhodes"},{"Stock":100,"Store":"Armadillo"},{"Stock":100,"Store":"Strawberry"}]', '[{"Buy":true,"Sell":true,"Store":"Valentine"},{"Buy":true,"Sell":true,"Store":"SaintDenis"},{"Buy":true,"Sell":true,"Store":"Blackwater"},{"Buy":true,"Sell":true,"Store":"Tumbleweed"},{"Buy":true,"Sell":true,"Store":"Rhodes"},{"Buy":true,"Sell":true,"Store":"Armadillo"},{"Buy":true,"Sell":true,"Store":"Strawberry"}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]'),
+	(17, 'vanilla_flower', 'Vanilla Flower', 'Herbs', '--', 75, 0.2, 0.08, '[{"Buy":0.02,"Store":"Valentine","Sell":0.01},{"Buy":0.02,"Store":"SaintDenis","Sell":0.01},{"Buy":0.02,"Store":"Blackwater","Sell":0.01},{"Buy":0.02,"Store":"Tumbleweed","Sell":0.01},{"Buy":0.02,"Store":"Rhodes","Sell":0.01},{"Buy":0.02,"Store":"Armadillo","Sell":0.01},{"Buy":0.02,"Store":"Strawberry","Sell":0.01}]', '[{"Store":"Valentine","Stock":100},{"Store":"SaintDenis","Stock":100},{"Store":"Blackwater","Stock":100},{"Store":"Tumbleweed","Stock":100},{"Store":"Rhodes","Stock":100},{"Store":"Armadillo","Stock":100},{"Store":"Strawberry","Stock":100}]', '[{"Buy":true,"Store":"Valentine","Sell":true},{"Buy":true,"Store":"SaintDenis","Sell":true},{"Buy":true,"Store":"Blackwater","Sell":true},{"Buy":true,"Store":"Tumbleweed","Sell":true},{"Buy":true,"Store":"Rhodes","Sell":true},{"Buy":true,"Store":"Armadillo","Sell":true},{"Buy":true,"Store":"Strawberry","Sell":true}]', '[{"sTax":0,"Store":"Valentine","bTax":0},{"sTax":0,"Store":"SaintDenis","bTax":0},{"sTax":0,"Store":"Blackwater","bTax":0},{"sTax":0,"Store":"Tumbleweed","bTax":0},{"sTax":0,"Store":"Rhodes","bTax":0},{"sTax":0,"Store":"Armadillo","bTax":0},{"sTax":0,"Store":"Strawberry","bTax":0}]'),
+	(18, 'gold_bar', 'Goldbar', 'Valuta', 'That mineral that everyone is killing each other for, but then refined into a golden bar', 25, 0.1, 0.05, '[{"Buy":0.02,"Store":"Valentine","Sell":0.01},{"Buy":0.02,"Store":"SaintDenis","Sell":0.01},{"Buy":0.02,"Store":"Blackwater","Sell":0.01},{"Buy":0.02,"Store":"Tumbleweed","Sell":0.01},{"Buy":0.02,"Store":"Rhodes","Sell":0.01},{"Buy":0.02,"Store":"Armadillo","Sell":0.01},{"Buy":0.02,"Store":"Strawberry","Sell":0.01}]', '[{"Store":"Valentine","Stock":100},{"Store":"SaintDenis","Stock":100},{"Store":"Blackwater","Stock":100},{"Store":"Tumbleweed","Stock":100},{"Store":"Rhodes","Stock":100},{"Store":"Armadillo","Stock":100},{"Store":"Strawberry","Stock":100}]', '[{"Buy":true,"Store":"Valentine","Sell":true},{"Buy":true,"Store":"SaintDenis","Sell":true},{"Buy":true,"Store":"Blackwater","Sell":true},{"Buy":true,"Store":"Tumbleweed","Sell":true},{"Buy":true,"Store":"Rhodes","Sell":true},{"Buy":true,"Store":"Armadillo","Sell":true},{"Buy":true,"Store":"Strawberry","Sell":true}]', '[{"bTax":0,"sTax":0,"Store":"Valentine"},{"bTax":0,"sTax":0,"Store":"SaintDenis"},{"bTax":0,"sTax":0,"Store":"Blackwater"},{"bTax":0,"sTax":0,"Store":"Tumbleweed"},{"bTax":0,"sTax":0,"Store":"Rhodes"},{"bTax":0,"sTax":0,"Store":"Armadillo"},{"bTax":0,"sTax":0,"Store":"Strawberry"}]');
+
+-- Dumping structure for table dokuscore._zones
+CREATE TABLE IF NOT EXISTS `_zones` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) DEFAULT NULL,
+  `Type` varchar(50) DEFAULT NULL,
+  `City` varchar(50) DEFAULT NULL,
+  `GD` int(11) DEFAULT 30,
+  `Poly` int(11) DEFAULT NULL,
+  `Grid` int(11) DEFAULT NULL,
+  `MinZ` float DEFAULT NULL,
+  `MaxZ` float DEFAULT NULL,
+  `OnEnter` longtext DEFAULT NULL,
+  `OnExit` longtext DEFAULT NULL,
+  `Vectors` longtext DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table dokuscore._zones: ~8 rows (approximately)
+INSERT INTO `_zones` (`ID`, `Name`, `Type`, `City`, `GD`, `Poly`, `Grid`, `MinZ`, `MaxZ`, `OnEnter`, `OnExit`, `Vectors`) VALUES
+	(1, 'Stables', 'Zone', 'Valentine', 20, 0, 0, 115.16, 120.16, '[{"Event":"DokusCore:Stables:SayHello","Type":"client","Meta":[]}]', '[{"Event":"DokusCore:Stables:SayGoodbye","Type":"client","Meta":[]}]', '[{"x":-361.3900146484375,"y":780.2999877929688},{"x":-362.6499938964844,"y":794.2999877929688},{"x":-377.3800048828125,"y":793.7999877929688},{"x":-376.2200012207031,"y":779.2000122070313}]'),
+	(2, 'Stables', 'NPC', 'Valentine', 18, 0, 0, 115, 117.25, '[{"Event":"DokusCore:Stables:Start","Meta":[],"Type":"client"}]', '[{"Event":"DokusCore:Stables:Stop","Meta":[],"Type":"client"}]', '[{"x":-366.6400146484375,"y":790.5},{"x":-363.6300048828125,"y":789.7000122070313},{"x":-363.92999267578127,"y":792.6199951171875},{"x":-366.7900085449219,"y":792.6199951171875}]'),
+	(3, 'GunStore', 'Zone', 'Valentine', 20, 0, 0, 118, 121, '[{"Meta":[],"Event":"DokusCore:GunStore:EnterStore","Type":"client"}]', '[{"Meta":[],"Event":"DokusCore:Gunstore:ExitStore","Type":"client"}]', '[{"x":-284.1300048828125,"y":784.25},{"x":-284.1499938964844,"y":776.6500244140625},{"x":-275.75,"y":776.6500244140625},{"x":-275.6600036621094,"y":784.25}]'),
+	(4, 'GunStore Catalog', 'NPC', 'Valentine', 20, 0, 0, 118, 121, '[{"Type":"client","Meta":[],"Event":"DokusCore:GunStore:NearCatalog"}]', '[{"Type":"client","Meta":[],"Event":"DokusCore:GunStore:NotNearCatalog"}]', '[{"x":-282.3299865722656,"y":780.0999755859375},{"x":-280.0899963378906,"y":780.0999755859375},{"x":-280.1300048828125,"y":781.2999877929688},{"x":-282.239990234375,"y":781.2999877929688}]'),
+	(9, 'GunStore', 'Zone', 'Saint Denis', 20, 0, 0, 48, 52, '[{"Meta":[],"Type":"client","Event":"DokusCore:GunStore:EnterStore"}]', '[{"Meta":[],"Type":"client","Event":"DokusCore:Gunstore:ExitStore"}]', '[{"x":2718.199951171875,"y":-1278.5},{"x":2722.10009765625,"y":-1286.9000244140626},{"x":2711.10009765625,"y":-1292.050048828125},{"x":2707.5,"y":-1283.9000244140626}]'),
+	(10, 'GunStore Catalog', 'NPC', 'Saint Denis', 20, 0, 0, 48, 52, '[{"Type":"client","Meta":[],"Event":"DokusCore:GunStore:NearCatalog"}]', '[{"Type":"client","Meta":[],"Event":"DokusCore:GunStore:NotNearCatalog"}]', '[{"x":2717.699951171875,"y":-1285.4000244140626},{"x":2715.5,"y":-1286.4000244140626},{"x":2714.929931640625,"y":-1285.300048828125},{"x":2717.179931640625,"y":-1284.300048828125}]'),
+	(11, 'GunStore', 'Zone', 'Tumbleweed', 17, 0, 0, -2, 1.3, '[{"Meta":[],"Type":"client","Event":"DokusCore:GunStore:EnterStore"}]', '[{"Meta":[],"Type":"client","Event":"DokusCore:GunStore:ExitStore"}]', '[{"x":-5511.60986328125,"y":-2961.800048828125},{"x":-5508.60986328125,"y":-2972.449951171875},{"x":-5503.06005859375,"y":-2970.949951171875},{"x":-5506.1298828125,"y":-2960.449951171875}]'),
+	(12, 'GunStore Catalog', 'NPC', 'Tumbleweed', 17, 0, 0, -2, 1.3, '[{"Meta":[],"Type":"client","Event":"DokusCore:GunStore:NearCatalog"}]', '[{"Meta":[],"Type":"client","Event":"DokusCore:GunStore:NotNearCatalog"}]', '[{"x":-5508.0,"y":-2963.39990234375},{"x":-5507.5,"y":-2965.300048828125},{"x":-5508.5,"y":-2965.5},{"x":-5509.0,"y":-2963.60009765625}]');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
